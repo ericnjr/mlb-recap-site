@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MLB Recaps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Recent Games</h1>
+    <ul>
+        {% for game in games %}
+        <li>
+            <a href="/game/{{ game[0] }}">
+                {{ game[3] }} {{ game[5] }} @ {{ game[2] }} {{ game[4] }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Recap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <a class="back-link" href="/">← Back to all games</a>
+    <h1>{{ game[2] }} {{ game[4] }} @ {{ game[1] }} {{ game[3] }}</h1>
+    <p class="game-date">{{ game[0] }}</p>
+
+    {% if report %}
+        <p class="recap">{{ report[0] }}</p>
+    {% else %}
+        <p class="recap">No recap available yet.</p>
+    {% endif %}
+
+    <h2>Batting</h2>
+    <table>
+        <tr>
+            <th>Player</th><th>AB</th><th>H</th><th>HR</th><th>RBI</th><th>R</th><th>BB</th><th>SO</th>
+        </tr>
+        {% for b in batters %}
+        <tr>
+            <td>{{ b[0] }}</td><td>{{ b[1] }}</td><td>{{ b[2] }}</td><td>{{ b[3] }}</td>
+            <td>{{ b[4] }}</td><td>{{ b[5] }}</td><td>{{ b[6] }}</td><td>{{ b[7] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Pitching</h2>
+    <table>
+        <tr>
+            <th>Player</th><th>IP</th><th>H</th><th>ER</th><th>SO</th><th>BB</th>
+        </tr>
+        {% for p in pitchers %}
+        <tr>
+            <td>{{ p[0] }}</td><td>{{ p[1] }}</td><td>{{ p[2] }}</td>
+            <td>{{ p[3] }}</td><td>{{ p[4] }}</td><td>{{ p[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
